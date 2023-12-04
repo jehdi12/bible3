@@ -1,0 +1,24 @@
+public class ChristianConversionSimulation {
+    public static void main(String[] args) {
+        long currentPopulation = 7700000000L; 
+        double annualGrowthRate = 0.0105; 
+        double averageLifetime = 72; 
+        int initialDisciples = 13;
+        double conversionRatePerYear = 3; 
+        long totalChristians = 2380000000L; 
+        
+        int years = 0;
+        while (totalChristians < currentPopulation) {
+            years++;
+            currentPopulation *= (1 + annualGrowthRate); 
+            totalChristians += totalChristians * conversionRatePerYear; 
+            
+            if (years % averageLifetime == 0) { 
+                int newDisciples = (int)(totalChristians / averageLifetime);
+                totalChristians += newDisciples * conversionRatePerYear; 
+            }
+        }
+        
+        System.out.println("It will take approximately " + years + " years for " + initialDisciples + 
+                           " disciples to convert the entire world population to Christianity.");
+    }
